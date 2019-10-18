@@ -1,38 +1,27 @@
 
         // In this case, the "this" keyword refers to the button that was clicked
-       
-
+        var topics= ["cat", "dog", "bunny", "hamster"];
+        var apiKey= "api_key=GQZjN6CrGW0gHa27wPKmPXrqbmyBGdEM";
+        var newInputBtn= 0;
     
-        var queryURL = "https://api.giphy.com/v1/gifs/trending?api_key=PHu3NIFQrteKkNpB3YUk619JaCDjYJzw&limit=cat&rating=G";
-
-$.ajax({
-    url: queryURL,
-    method: "GET"
-}).then(function(response) {
-    
-   results= response.data;
-    console.log(response);
-
-    console.log(response.data);
-
-    console.log(response.data["9"]);
-
-    console.log(results["9"].images["480w_still"]);
-
-    
-  
 
 
     $(".btn-sm").on("click", function(){
+      var pressedBtn= $(this).val().trim();
 
-      var imageDisplay = (results[9].images.original.url);
+      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + pressedBtn + apiKey;
+
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).then(function(response) {
+      console.log(response);
 
 
-      $("#gifsHere").attr("src", imageDisplay);
+      //var catGif= response.data.images.original.url;
 
 
-
-
+      //$("#gifsHere").attr("src", catGif);
 
     });
 
