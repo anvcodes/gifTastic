@@ -15,18 +15,35 @@
         url: queryURL,
         method: "GET"
     }).then(function(response) {
-      console.log(response);
+      var data= response.data[0];
+      for(var i = 0; i < data.length; i ++){
 
 
-      //var catGif= response.data.images.original.url;
+       
+
+      };
+      
+      console.log(response.data[i].images.original.url);
 
 
-      //$("#gifsHere").attr("src", catGif);
+      var catGif= response.data[i].images.original.url;
+       var gif = $(".gifDisplay").attr("src", catGif);
+       $(".gifDisplay").append(gif);
+
+     
 
     });
 
     
 
+  });
+
+  $("#search-button").on("click", function(){
+
+
+    var searchInput = $("<input>", this).val().trim();
+   var newBtn=  $("<button>").text(searchInput);
+   $(".btns").append(newBtn);
   })
            // for (var i = 0; i < output.length; i++) {
   
